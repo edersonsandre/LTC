@@ -1,0 +1,179 @@
+<?php
+$tableCategory = new Application_Model_Category_DbTable();
+$tableMember = new Application_Model_Member_DbTable();
+?>
+
+<script type="text/javascript">
+function toggleCheckboxes(source)
+{
+    var checkboxes = document.getElementsByName('del_id[]');
+    for (var i = 0; i < checkboxes.length; i++)
+    {
+        checkboxes[i].checked = source.checked;
+    }
+}
+
+function updateFilters(paramName, paramValue)
+{
+    var newQuery = [];
+    var args = {};
+    var query = location.search.indexOf('?') > -1 ? location.search.substring(1).split('&') : [];
+
+    for (var pairIndex = 0; pairIndex < query.length; pairIndex++) {
+        var param = query[pairIndex].split('=');
+        args[param[0]] = param[1];
+    }
+
+    args[paramName] = paramValue;
+    for (var key in args)
+    {
+        newQuery.push(key + '=' + encodeURIComponent(args[key]));
+    }
+
+    self.location.href = '?' + newQuery.join('&');
+}
+</script>
+
+<div style="text-align:right">
+<a href="<?php echo $this->url(array('controller' => 'post', 'action' => 'index'), null, true); ?>">Reset Filters</a>
+- <a href="<?php echo $this->url(array('controller' => 'post', 'action' => 'create'), null, true); ?>">Add New</a></div><br />
+
+<form method="get" action="<?php echo $this->url(array('controller' => 'post', 'action' => 'index'), null, true); ?>">
+<div>
+Search for: <input type="text" name="_kw" value="<?php echo htmlspecialchars($this->param_kw); ?>" /> in 
+<?php echo $this->formSelect('_sm', $this->param_sm, array(), array (
+  'all' => 'All',
+  'title' => 'Title',
+  'content' => 'Content',
+)); ?>
+<input type="submit" value="Go" />
+</div>
+</form>
+
+<form method="post" action="<?php echo $this->url(array('controller' => 'post', 'action' => 'delete'), null, true); ?>" onsubmit="return confirm('Delete selected rows?');">
+<table width="100%" border="1" style="border-collapse:collapse" cellspacing="0" 
+    cellpadding="3">
+    <thead>
+        <tr>
+            <th><input type="checkbox" onchange="toggleCheckboxes(this);" /></th>
+            <th<?php if ('id' == $this->sortField) echo ' class="sort-field sort-', htmlspecialchars($this->param_so), '"'; ?>>
+                Id 
+                <a href='<?php echo $this->url($_GET + array('_sf' => 'id', '_so' => 'asc')); ?>'>&#x25B2;</a>
+                <a href='<?php echo $this->url($_GET + array('_sf' => 'id', '_so' => 'desc')); ?>'>&#x25BC;</a>
+                
+            </th>
+            <th<?php if ('title' == $this->sortField) echo ' class="sort-field sort-', htmlspecialchars($this->param_so), '"'; ?>>
+                Title 
+                <a href='<?php echo $this->url($_GET + array('_sf' => 'title', '_so' => 'asc')); ?>'>&#x25B2;</a>
+                <a href='<?php echo $this->url($_GET + array('_sf' => 'title', '_so' => 'desc')); ?>'>&#x25BC;</a>
+                
+            </th>
+            <th<?php if ('content' == $this->sortField) echo ' class="sort-field sort-', htmlspecialchars($this->param_so), '"'; ?>>
+                Content 
+                <a href='<?php echo $this->url($_GET + array('_sf' => 'content', '_so' => 'asc')); ?>'>&#x25B2;</a>
+                <a href='<?php echo $this->url($_GET + array('_sf' => 'content', '_so' => 'desc')); ?>'>&#x25BC;</a>
+                
+            </th>
+            <th<?php if ('date_posted' == $this->sortField) echo ' class="sort-field sort-', htmlspecialchars($this->param_so), '"'; ?>>
+                Date Posted 
+                <a href='<?php echo $this->url($_GET + array('_sf' => 'date_posted', '_so' => 'asc')); ?>'>&#x25B2;</a>
+                <a href='<?php echo $this->url($_GET + array('_sf' => 'date_posted', '_so' => 'desc')); ?>'>&#x25BC;</a>
+                
+            </th>
+            <th<?php if ('category_id' == $this->sortField) echo ' class="sort-field sort-', htmlspecialchars($this->param_so), '"'; ?>>
+                Category Id 
+                <a href='<?php echo $this->url($_GET + array('_sf' => 'category_id', '_so' => 'asc')); ?>'>&#x25B2;</a>
+                <a href='<?php echo $this->url($_GET + array('_sf' => 'category_id', '_so' => 'desc')); ?>'>&#x25BC;</a>
+                <?php
+    echo $this->formSelect('category_id', $this->paramcategory_id, array('onchange' => 'updateFilters(\'category_id\', this.options[this.selectedIndex].value)'), array('' => '- - Change - -') + $tableCategory->fetchPairs());
+?>
+            </th>
+            <th<?php if ('owner_id' == $this->sortField) echo ' class="sort-field sort-', htmlspecialchars($this->param_so), '"'; ?>>
+                Owner Id 
+                <a href='<?php echo $this->url($_GET + array('_sf' => 'owner_id', '_so' => 'asc')); ?>'>&#x25B2;</a>
+                <a href='<?php echo $this->url($_GET + array('_sf' => 'owner_id', '_so' => 'desc')); ?>'>&#x25BC;</a>
+                <?php
+    echo $this->formSelect('owner_id', $this->paramowner_id, array('onchange' => 'updateFilters(\'owner_id\', this.options[this.selectedIndex].value)'), array('' => '- - Change - -') + $tableMember->fetchPairs());
+?>
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <th><input type="checkbox" onchange="toggleCheckboxes(this);" /></th>
+            <th<?php if ('id' == $this->sortField) echo ' class="sort-field sort-', htmlspecialchars($this->param_so), '"'; ?>>
+                Id 
+                <a href='<?php echo $this->url($_GET + array('_sf' => 'id', '_so' => 'asc')); ?>'>&#x25B2;</a>
+                <a href='<?php echo $this->url($_GET + array('_sf' => 'id', '_so' => 'desc')); ?>'>&#x25BC;</a>
+                
+            </th>
+            <th<?php if ('title' == $this->sortField) echo ' class="sort-field sort-', htmlspecialchars($this->param_so), '"'; ?>>
+                Title 
+                <a href='<?php echo $this->url($_GET + array('_sf' => 'title', '_so' => 'asc')); ?>'>&#x25B2;</a>
+                <a href='<?php echo $this->url($_GET + array('_sf' => 'title', '_so' => 'desc')); ?>'>&#x25BC;</a>
+                
+            </th>
+            <th<?php if ('content' == $this->sortField) echo ' class="sort-field sort-', htmlspecialchars($this->param_so), '"'; ?>>
+                Content 
+                <a href='<?php echo $this->url($_GET + array('_sf' => 'content', '_so' => 'asc')); ?>'>&#x25B2;</a>
+                <a href='<?php echo $this->url($_GET + array('_sf' => 'content', '_so' => 'desc')); ?>'>&#x25BC;</a>
+                
+            </th>
+            <th<?php if ('date_posted' == $this->sortField) echo ' class="sort-field sort-', htmlspecialchars($this->param_so), '"'; ?>>
+                Date Posted 
+                <a href='<?php echo $this->url($_GET + array('_sf' => 'date_posted', '_so' => 'asc')); ?>'>&#x25B2;</a>
+                <a href='<?php echo $this->url($_GET + array('_sf' => 'date_posted', '_so' => 'desc')); ?>'>&#x25BC;</a>
+                
+            </th>
+            <th<?php if ('category_id' == $this->sortField) echo ' class="sort-field sort-', htmlspecialchars($this->param_so), '"'; ?>>
+                Category Id 
+                <a href='<?php echo $this->url($_GET + array('_sf' => 'category_id', '_so' => 'asc')); ?>'>&#x25B2;</a>
+                <a href='<?php echo $this->url($_GET + array('_sf' => 'category_id', '_so' => 'desc')); ?>'>&#x25BC;</a>
+                <?php
+    echo $this->formSelect('category_id', $this->paramcategory_id, array('onchange' => 'updateFilters(\'category_id\', this.options[this.selectedIndex].value)'), array('' => '- - Change - -') + $tableCategory->fetchPairs());
+?>
+            </th>
+            <th<?php if ('owner_id' == $this->sortField) echo ' class="sort-field sort-', htmlspecialchars($this->param_so), '"'; ?>>
+                Owner Id 
+                <a href='<?php echo $this->url($_GET + array('_sf' => 'owner_id', '_so' => 'asc')); ?>'>&#x25B2;</a>
+                <a href='<?php echo $this->url($_GET + array('_sf' => 'owner_id', '_so' => 'desc')); ?>'>&#x25BC;</a>
+                <?php
+    echo $this->formSelect('owner_id', $this->paramowner_id, array('onchange' => 'updateFilters(\'owner_id\', this.options[this.selectedIndex].value)'), array('' => '- - Change - -') + $tableMember->fetchPairs());
+?>
+            </th>
+            <th>Actions</th>
+        </tr>
+    </tfoot>
+    <tbody>
+<?php foreach ($this->paginator as $row): ?>
+        <tr>
+            <td align="center"><input type="checkbox" name="del_id[]" value="<?php echo $row->id; ?>" /></td>
+            <td><?php echo $row->id; ?></td>
+            <td><?php echo $row->title; ?></td>
+            <td><?php echo mb_substr($row->content, 0, 100), '...'; ?></td>
+            <td><?php echo $row->date_posted; ?></td>
+            <td><?php     $linkedRow = $tableCategory->find($row->category_id)->current();
+    if ($linkedRow) {
+        echo $linkedRow->getZodekenAutoLabel();
+    } else {
+        echo $linkedRow->category_id, ' (unlinked)';
+    } ?></td>
+            <td><?php     $linkedRow = $tableMember->find($row->owner_id)->current();
+    if ($linkedRow) {
+        echo $linkedRow->getZodekenAutoLabel();
+    } else {
+        echo $linkedRow->owner_id, ' (unlinked)';
+    } ?></td>
+            <td align="center"><a href="<?php echo $this->url(array('controller' => 'post', 'action' => 'update', 'id' => $row->id), null, true); ?>">Edit</a> 
+    - <a onclick="return confirm('Confirm deletion!');" href="<?php echo $this->url(array('controller' => 'post', 'action' => 'delete', 'del_id' => $row->id), null, true); ?>">Delete</a></td>
+        </tr>
+<?php endforeach; ?>
+    </tbody>
+</table><br />
+<input type="submit" value="Delete Selected Rows" />
+</form>
+
+<?php echo $this->paginationControl($this->paginator,
+                                    'Sliding',
+                                    'pagination_control.phtml');

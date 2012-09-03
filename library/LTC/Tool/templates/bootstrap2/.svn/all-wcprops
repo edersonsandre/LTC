@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/67/trunk/Zodeken/ZfTool/templates/bootstrap2
+END
+view-pagination.php
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/65/trunk/Zodeken/ZfTool/templates/bootstrap2/view-pagination.php
+END
+form.php
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/67/trunk/Zodeken/ZfTool/templates/bootstrap2/form.php
+END
+row.php
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/65/trunk/Zodeken/ZfTool/templates/bootstrap2/row.php
+END
+row-abstract.php
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/67/trunk/Zodeken/ZfTool/templates/bootstrap2/row-abstract.php
+END
+view-create.php
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/67/trunk/Zodeken/ZfTool/templates/bootstrap2/view-create.php
+END
+output-config.xml
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/67/trunk/Zodeken/ZfTool/templates/bootstrap2/output-config.xml
+END
+view-index.php
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/67/trunk/Zodeken/ZfTool/templates/bootstrap2/view-index.php
+END
+controller.php
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/65/trunk/Zodeken/ZfTool/templates/bootstrap2/controller.php
+END
+rowset.php
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/65/trunk/Zodeken/ZfTool/templates/bootstrap2/rowset.php
+END
+rowset-abstract.php
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/65/trunk/Zodeken/ZfTool/templates/bootstrap2/rowset-abstract.php
+END
+mapper.php
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/65/trunk/Zodeken/ZfTool/templates/bootstrap2/mapper.php
+END
+table.php
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/65/trunk/Zodeken/ZfTool/templates/bootstrap2/table.php
+END
+table-abstract.php
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/!svn/ver/65/trunk/Zodeken/ZfTool/templates/bootstrap2/table-abstract.php
+END
+view-update.php
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/67/trunk/Zodeken/ZfTool/templates/bootstrap2/view-update.php
+END
+form-latest.php
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/67/trunk/Zodeken/ZfTool/templates/bootstrap2/form-latest.php
+END

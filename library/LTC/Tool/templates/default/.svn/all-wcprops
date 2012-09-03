@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/67/trunk/Zodeken/ZfTool/templates/default
+END
+controller.php
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/65/trunk/Zodeken/ZfTool/templates/default/controller.php
+END
+rowset.php
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/65/trunk/Zodeken/ZfTool/templates/default/rowset.php
+END
+rowset-abstract.php
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/65/trunk/Zodeken/ZfTool/templates/default/rowset-abstract.php
+END
+mapper.php
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/65/trunk/Zodeken/ZfTool/templates/default/mapper.php
+END
+table.php
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/65/trunk/Zodeken/ZfTool/templates/default/table.php
+END
+table-abstract.php
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/65/trunk/Zodeken/ZfTool/templates/default/table-abstract.php
+END
+view-update.php
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/67/trunk/Zodeken/ZfTool/templates/default/view-update.php
+END
+form-latest.php
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/67/trunk/Zodeken/ZfTool/templates/default/form-latest.php
+END
+view-pagination.php
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/65/trunk/Zodeken/ZfTool/templates/default/view-pagination.php
+END
+form.php
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/67/trunk/Zodeken/ZfTool/templates/default/form.php
+END
+row.php
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/65/trunk/Zodeken/ZfTool/templates/default/row.php
+END
+row-abstract.php
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/67/trunk/Zodeken/ZfTool/templates/default/row-abstract.php
+END
+view-create.php
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/67/trunk/Zodeken/ZfTool/templates/default/view-create.php
+END
+output-config.xml
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/67/trunk/Zodeken/ZfTool/templates/default/output-config.xml
+END
+view-index.php
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/67/trunk/Zodeken/ZfTool/templates/default/view-index.php
+END

@@ -232,7 +232,7 @@ class LTC_Tool_GeneratorProvider extends Zend_Tool_Framework_Provider_Abstract {
 
         // get the list of tables
         echo "Analyzing tables\n";
-        foreach ($this->_db->fetchAll("SHOW TABLES", array(), Zend_Db::FETCH_NUM) as $tableRow) {
+        foreach ($this->_db->fetchAll("SHOW TABLES", array(), Zend_Db::FETCH_NUM) as $tableRow) { echo "1\n";
             $tableName = $tableRow[0];
 
             $primaryKey = array();
@@ -398,16 +398,11 @@ class LTC_Tool_GeneratorProvider extends Zend_Tool_Framework_Provider_Abstract {
      * @param string $module
      * @return 
      */
-    public function CRUD($override = false, $module = '') {
+    public function CRUD($override = false) {
 
         $this->_cwd;
 
         $this->_override = $override == 1 ? true : false;
-
-        if (!empty($module)) {
-            $this->_module = "/modules/{$module}/";
-        }
-
 
         $config = $this->_cwd . "/application/configs/application.ini";
         if (!file_exists($config)) {
@@ -451,6 +446,8 @@ class LTC_Tool_GeneratorProvider extends Zend_Tool_Framework_Provider_Abstract {
         $this->_dbName = $dbConfig->params->dbname;
         $this->_packageName = $this->_getCamelCase($this->_dbName);
         $this->_db = Zend_Db::factory($dbConfig);
+        
+        //print_r($this->_db); exit();
 
         // modify the config file
         if (!$writableConfigs->zodeken) {
@@ -482,7 +479,7 @@ class LTC_Tool_GeneratorProvider extends Zend_Tool_Framework_Provider_Abstract {
             $output = array(
                 'key' => strtolower(chr($asciiChar++)),
                 'templateName' => $outputElement->getAttribute('templateName'),
-                'templateFile' => $dir . '/templates/default/' . $outputElement->getAttribute('templateName'),
+                'templateFile' => $dir . '/templates/bootstrap/' . $outputElement->getAttribute('templateName'),
                 'canOverride' => (int) $outputElement->getAttribute('canOverride'),
                 'outputPath' => $outputElement->getAttribute('outputPath'),
                 'acceptMapTable' => $outputElement->getAttribute('acceptMapTable'),
@@ -548,7 +545,7 @@ class LTC_Tool_GeneratorProvider extends Zend_Tool_Framework_Provider_Abstract {
 
         // modify configs
         $writableConfigs->zodeken->packageName = $this->_packageName;
-        $writableConfigs->production->autoloadernamespaces = $autoloaderNamespaces;
+        //$writableConfigs->production->autoloadernamespaces[] = $autoloaderNamespaces;
 
         $configWriter = new Zend_Config_Writer_Ini(array(
                     'config' => $writableConfigs,
